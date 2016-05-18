@@ -20,7 +20,7 @@
   },
   "main": "index.html",
   "scripts": {
-    "dev": "node webpack/dev.js"
+    "dev": "node webpack/server.dev.js"
   },
   "dependencies": {
     "react": "^15.0.2",
