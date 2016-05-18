@@ -2,7 +2,26 @@
   "name": "bookmarks",
   "version": "0.0.1",
   "description": "Display the bookmarks you want on the new tab page",
-  "main": "blank.html",
+  "author": "Tom Dalenberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dalenberg/duizend-bookmarks/issues"
+  },
+  "homepage": "https://github.com/dalenberg/duizend-bookmarks#readme",
+  "keywords": [
+    "google",
+    "chrome",
+    "bookmarks",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dalenberg/duizend-bookmarks.git"
+  },
+  "main": "index.html",
+  "scripts": {
+    "start": "node webpack/server.js"
+  },
   "dependencies": {
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
@@ -26,25 +45,5 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.8.4",
     "webpack-dev-server": "^1.8.0"
-  },
-  "scripts": {
-    "start": "node webpack/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dalenberg/duizend-bookmarks.git"
-  },
-  "keywords": [
-    "google",
-    "chrome",
-    "bookmarks",
-    "react"
-  ],
-  "author": "Tom Dalenberg",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dalenberg/duizend-bookmarks/issues"
-  },
-  "homepage": "https://github.com/dalenberg/duizend-bookmarks#readme"
+  }
 }

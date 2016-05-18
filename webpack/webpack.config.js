@@ -10,20 +10,12 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: __dirname,
-    publicPath: '/static/',
-    libraryTarget: 'umd'
+    publicPath: '/static/'
   },
   module: {
     loaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['babel'],
-        include: path.join(__dirname, 'app')
-      },
-      {
-        test: /\.css$/,
-        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
-      }
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel" },
+      { test: /\.css$/,loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader' }
     ]
   },
   resolve: {
