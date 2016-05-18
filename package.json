@@ -20,7 +20,7 @@
   },
   "main": "index.html",
   "scripts": {
-    "start": "node webpack/server.js"
+    "dev": "node webpack/dev.js"
   },
   "dependencies": {
     "react": "^15.0.2",
@@ -42,6 +42,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "^3.7.0",
     "react-transform-hmr": "^1.0.1",
+    "shelljs": "^0.7.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.8.4",
     "webpack-dev-server": "^1.8.0"
