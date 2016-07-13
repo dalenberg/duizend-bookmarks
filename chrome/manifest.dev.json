@@ -10,5 +10,5 @@
     "newtab": "index.html"
   },
   "manifest_version": 2,
-  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:5000 https://localhost:5000 ws://localhost:5000 'unsafe-eval'; connect-src http://localhost:5000 https://localhost:5000 ws://localhost:5000; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:;"
+  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:;"
 }

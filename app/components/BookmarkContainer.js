@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
 import BookmarksList from './BookmarksList';
 
-
-var items = [
-  { title: 'Test', url: 'google.com'},
-  { title: 'Joe', url: 'joe.com'}
-]
-
 export default class BookmarkContainer extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      data: items
+      data: []
     };
   }
 
@@ -32,3 +26,11 @@ export default class BookmarkContainer extends Component {
     );
   }
 }
+
+BookmarkContainer.propTypes = {
+  folder: React.PropTypes.number.isRequired
+};
+
+BookmarkContainer.defaultProps = {
+  folder: 304
+};

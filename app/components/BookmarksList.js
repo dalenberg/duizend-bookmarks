@@ -7,12 +7,17 @@ export default class BookmarksList extends Component {
   }
 
   render() {
-    // 
+    //
     // chrome.bookmarks.getTree(function(tree) {
     //   console.log(tree)
     // });
+    let styleList = {
+      width: 600,
+      marginLeft: 'auto',
+      marginRight: 'auto'
+    }
 
     let bookmarks = this.props.data.map((bookmark, i) => <Bookmark key={i} url={bookmark.url}>{bookmark.title}</Bookmark>)
-    return <div><ul>{bookmarks}</ul></div>;
+    return <ul style={styleList}>{bookmarks}</ul>;
   }
 }

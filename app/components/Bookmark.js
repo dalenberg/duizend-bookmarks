@@ -1,18 +1,36 @@
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 
-export default class Bookmark extends Component {
+const propTypes = {
+  children: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
+};
+
+class Bookmark extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    let styleListItem = {
+      listStyle: 'none',
+      display: 'inline-block'
+    };
+
+    let styleLink = {
+      display: 'inline-block',
+      width: 200,
+      color: '#333',
+      padding: 20,
+      boxSizing: 'border-box',
+      textDecoration: 'none',
+    };
+
     return (
-      <li><a {...this.props} href={this.props.url}>{this.props.children}</a></li>
+      <li style={styleListItem}><a {...this.props} href={this.props.url} style={styleLink}>{this.props.children}</a></li>
     );
   }
 }
 
-Bookmark.propTypes = {
-  children: React.PropTypes.string.isRequired,
-  url: React.PropTypes.string.isRequired
-}
+Bookmark.propTypes = propTypes;
+
+export default Bookmark;
