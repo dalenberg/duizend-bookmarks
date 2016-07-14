@@ -20,7 +20,8 @@
   },
   "main": "index.html",
   "scripts": {
-    "dev": "node webpack/server.dev"
+    "dev": "node webpack/server.dev",
+    "lint": "eslint ."
   },
   "dependencies": {
     "babel-runtime": "^6.9.2",
@@ -30,7 +31,6 @@
   },
   "devDependencies": {
     "babel-core": "^6.3.21",
-    "babel-eslint": "^5.0.0-beta6",
     "babel-loader": "^6.2.0",
     "babel-plugin-react-transform": "^2.0.0-beta1",
     "babel-plugin-transform-runtime": "^6.3.13",
@@ -40,8 +40,11 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-register": "^6.9.0",
     "css-loader": "^0.23.1",
-    "eslint": "^0.21.2",
-    "eslint-plugin-react": "^2.3.0",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.0.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "^3.7.0",
     "react-transform-hmr": "^1.0.1",

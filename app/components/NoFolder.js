@@ -1,10 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class NoFolder extends Component {
+const NoFolder = () => (
+  <p>Nog geen map geselecteerd</p>
+);
 
-  render() {
-    return (
-      <p>Nog geen map geselecteerd</p>
-    );
-  }
-}
+export default NoFolder;

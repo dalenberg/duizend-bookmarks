@@ -1,35 +1,33 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 const propTypes = {
   children: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
+  href: PropTypes.string.isRequired,
 };
 
-class Bookmark extends Component {
-  constructor(props) {
-    super(props);
-  }
+const styleListItem = {
+  listStyle: 'none',
+  display: 'inline-block',
+};
 
-  render() {
-    let styleListItem = {
-      listStyle: 'none',
-      display: 'inline-block'
-    };
+const styleLink = {
+  display: 'inline-block',
+  width: 200,
+  color: '#333',
+  padding: 20,
+  boxSizing: 'border-box',
+  textDecoration: 'none',
+};
 
-    let styleLink = {
-      display: 'inline-block',
-      width: 200,
-      color: '#333',
-      padding: 20,
-      boxSizing: 'border-box',
-      textDecoration: 'none',
-    };
-
-    return (
-      <li style={styleListItem}><a {...this.props} href={this.props.url} style={styleLink}>{this.props.children}</a></li>
-    );
-  }
-}
+const Bookmark = ({ href, children }) => (
+  <li style={styleListItem}>
+    <a
+      href={href}
+      style={styleLink}
+      children={children}
+    />
+  </li>
+);
 
 Bookmark.propTypes = propTypes;
 

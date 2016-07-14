@@ -1,23 +1,33 @@
-import React, {Component} from 'react';
+import React, { PropTypes } from 'react';
 import Bookmark from './Bookmark';
 
-export default class BookmarksList extends Component {
-  constructor(props) {
-    super(props);
-  }
+const propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
-  render() {
-    //
-    // chrome.bookmarks.getTree(function(tree) {
-    //   console.log(tree)
-    // });
-    let styleList = {
-      width: 600,
-      marginLeft: 'auto',
-      marginRight: 'auto'
-    }
+const defaultProps = {
+  data: [],
+};
 
-    let bookmarks = this.props.data.map((bookmark, i) => <Bookmark key={i} url={bookmark.url}>{bookmark.title}</Bookmark>)
-    return <ul style={styleList}>{bookmarks}</ul>;
-  }
-}
+const BookmarksList = ({ data }) => {
+  const styleList = {
+    width: 600,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  };
+
+  const bookmarks = data && data.map((bookmark, i) =>
+    <Bookmark
+      key={i}
+      href={bookmark.url}
+      children={bookmark.title}
+    />
+  );
+
+  return <ul style={styleList}>{bookmarks}</ul>;
+};
+
+BookmarksList.propTypes = propTypes;
+BookmarksList.defaultProps = defaultProps;
+
+export default BookmarksList;

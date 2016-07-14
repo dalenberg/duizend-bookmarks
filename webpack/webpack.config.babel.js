@@ -25,19 +25,16 @@ const baseDevConfig = () => ({
       query: {
         presets: ['react-hmre'],
       },
-    }, {
-      test: /\.css$/,
-      loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
-    }]
+    }],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('development')
-      }
-    })
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
   ],
 });
 

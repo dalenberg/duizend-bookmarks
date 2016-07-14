@@ -1,12 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import BookmarkContainer from './BookmarkContainer';
-import BookmarksList from './Bookmark';
 
-export default class App extends Component {
+const App = () => (
+  <BookmarkContainer />
+);
 
-  render() {
-    return (
-      <BookmarkContainer folder="304" />
-    );
-  }
-}
+export default App;

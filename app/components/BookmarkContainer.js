@@ -1,23 +1,40 @@
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import BookmarksList from './BookmarksList';
 
-export default class BookmarkContainer extends Component {
+const propTypes = {
+  folder: PropTypes.string.isRequired,
+};
 
+const defaultProps = {
+  folder: '304',
+};
+
+const localBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+
+class BookmarkContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: []
-    };
+
+    this.state = { data: localBookmarks };
+    this.setData = this.setData.bind(this);
   }
 
   componentWillMount() {
+    localStorage.clear();
     this.getBookmarks(this.props.folder);
   }
 
+  setData(data) {
+    this.setState({ data });
+    localStorage.setItem('bookmarks', JSON.stringify(this.state.data));
+  }
+
   getBookmarks(folderId) {
-    chrome.bookmarks.getChildren(folderId, function(data) {
-      this.setState({data: data});
-    }.bind(this));
+    if(localBookmarks.length > 0) {
+      this.setState(localBookmarks);
+    } else {
+      chrome.bookmarks.getChildren(folderId, this.setData);
+    }
   }
 
   render() {
@@ -27,10 +44,7 @@ export default class BookmarkContainer extends Component {
   }
 }
 
-BookmarkContainer.propTypes = {
-  folder: React.PropTypes.number.isRequired
-};
+BookmarkContainer.propTypes = propTypes;
+BookmarkContainer.defaultProps = defaultProps;
 
-BookmarkContainer.defaultProps = {
-  folder: 304
-};
+export default BookmarkContainer;
