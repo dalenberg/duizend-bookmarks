@@ -6,4 +6,7 @@ Go to the [Chrome Extensions page](chrome://extensions/) and add /dev as unpacke
 
 
 ## Useful links
-- [Bookmarks API from Google Developer Chrome Platform] (https://developer.chrome.com/extensions/bookmarks)
+- [Bookmarks API from Google Developer Chrome Platform](https://developer.chrome.com/extensions/bookmarks)
+
+## Credits
+Some code is inspired by [React Chrome Extension Boilerplate](https://github.com/jhen0409/react-chrome-extension-boilerplate)
