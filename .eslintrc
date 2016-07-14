@@ -1,7 +1,10 @@
 {
   "extends": "airbnb",
+  "env": {
+    "shelljs": true
+  },
   "globals": {
     "chrome": true,
-    "localStorage": true,
+    "localStorage": true
   }
 }

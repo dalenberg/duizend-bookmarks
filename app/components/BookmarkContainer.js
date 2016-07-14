@@ -30,7 +30,7 @@ class BookmarkContainer extends Component {
   }
 
   getBookmarks(folderId) {
-    if(localBookmarks.length > 0) {
+    if (localBookmarks.length > 0) {
       this.setState(localBookmarks);
     } else {
       chrome.bookmarks.getChildren(folderId, this.setData);
