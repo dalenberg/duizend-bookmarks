@@ -6,7 +6,7 @@ const port = 3000;
 const publicPath = `http://${host}:${port}`;
 const hotScript = `webpack-hot-middleware/client?path=${publicPath}/__webpack_hmr`;
 
-const baseDevConfig = () => ({
+const config = {
   devtool: 'eval-cheap-module-source-map',
   entry: [hotScript, path.join(__dirname, '../app/index')],
   output: {
@@ -36,8 +36,6 @@ const baseDevConfig = () => ({
       },
     }),
   ],
-});
+};
 
-const appConfig = baseDevConfig();
-
-module.exports = appConfig;
+module.exports = config;
