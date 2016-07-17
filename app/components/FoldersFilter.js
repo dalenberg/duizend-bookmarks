@@ -8,8 +8,14 @@ const propTypes = {
   title: PropTypes.string,
 };
 
+const foldersListStyle = {
+  borderBottom: '1px solid #ddd',
+  padding: 20,
+  textAlign: 'center'
+};
+
 const FoldersFilter = ({ folders, loading, onChange, currentFolder, title }) => (
-  <div>
+  <div style={foldersListStyle}>
     {!loading &&
       <select
         name="folders"

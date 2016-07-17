@@ -12,11 +12,16 @@ const styleListItem = {
 
 const styleLink = {
   display: 'inline-block',
-  width: 200,
+  width: 180,
+  boxSizing: 'border-box',
   color: '#333',
   padding: 20,
+  margin: 10,
   boxSizing: 'border-box',
   textDecoration: 'none',
+  height: 80,
+  border: '1px solid #ddd',
+  overflow: 'hidden',
 };
 
 const Bookmark = ({ href, children }) => (
