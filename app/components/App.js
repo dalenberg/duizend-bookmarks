@@ -1,8 +1,12 @@
 import React from 'react';
 import BookmarkContainer from './BookmarkContainer';
+import SelectBookmarkContainer from './SelectBookmarkContainer';
 
 const App = () => (
-  <BookmarkContainer />
+  <div>
+    <SelectBookmarkContainer />
+    <BookmarkContainer />
+  </div>
 );
 
 export default App;

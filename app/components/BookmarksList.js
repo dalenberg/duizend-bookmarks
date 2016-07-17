@@ -2,21 +2,21 @@ import React, { PropTypes } from 'react';
 import Bookmark from './Bookmark';
 
 const propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  bookmarks: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const defaultProps = {
-  data: [],
+  bookmarks: [],
 };
 
-const BookmarksList = ({ data }) => {
+const BookmarksList = ({ bookmarks }) => {
   const styleList = {
     width: 600,
     marginLeft: 'auto',
     marginRight: 'auto',
   };
 
-  const bookmarks = data && data.map((bookmark, i) =>
+  const renderBookmarks = bookmarks && bookmarks.map((bookmark, i) =>
     <Bookmark
       key={i}
       href={bookmark.url}
@@ -24,7 +24,7 @@ const BookmarksList = ({ data }) => {
     />
   );
 
-  return <ul style={styleList}>{bookmarks}</ul>;
+  return <ul style={styleList}>{renderBookmarks}</ul>;
 };
 
 BookmarksList.propTypes = propTypes;
