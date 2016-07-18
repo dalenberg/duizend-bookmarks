@@ -3,35 +3,34 @@ import React, { PropTypes } from 'react';
 const propTypes = {
   children: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
-};
-
-const styleListItem = {
-  listStyle: 'none',
-  display: 'inline-block',
+  id: PropTypes.string.isRequired,
 };
 
 const styleLink = {
-  display: 'inline-block',
-  width: 180,
+  display: 'block',
+  width: 380,
   boxSizing: 'border-box',
-  color: '#333',
+  fontSize: 20,
+  color: '#666',
   padding: 20,
   margin: 10,
-  boxSizing: 'border-box',
   textDecoration: 'none',
-  height: 80,
-  border: '1px solid #ddd',
+  height: 100,
+  border: '1px solid rgba(0,0,0,0.1)',
   overflow: 'hidden',
+  borderRadius: 6,
+  boxShadow: '0 2px 20px rgba(0,0,0,0.1)',
+  backgroundColor: '#fff',
 };
 
-const Bookmark = ({ href, children }) => (
-  <li style={styleListItem}>
-    <a
-      href={href}
-      style={styleLink}
-      children={children}
-    />
-  </li>
+const Bookmark = ({ href, id, children }) => (
+  <a
+    id={`bookmark_${id}`}
+    href={href}
+    style={styleLink}
+  >
+    {children}
+  </a>
 );
 
 Bookmark.propTypes = propTypes;

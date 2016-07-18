@@ -3,7 +3,8 @@
   "description": "Display the bookmarks you want on the new tab page",
   "version": "0.1",
   "permissions": [
-    "bookmarks"
+    "bookmarks",
+    "http://www.google.com/"
   ],
   "incognito": "split",
   "chrome_url_overrides": {
@@ -13,5 +14,5 @@
     "index.html"
   ],
   "manifest_version": 2,
-  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:;"
+  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 'unsafe-eval'; connect-src http://www.google.com/ http://localhost:3000; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:;"
 }

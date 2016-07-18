@@ -1,7 +1,7 @@
 const initialState = {
   items: [],
   loading: false,
-  current: '304',
+  current: '0',
 };
 
 const folders = (state = initialState, action) => {
