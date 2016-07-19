@@ -10,17 +10,33 @@ const styleLink = {
   display: 'block',
   width: 380,
   boxSizing: 'border-box',
-  fontSize: 20,
-  color: '#666',
-  padding: 20,
+  color: '#ccc',
+  padding: 22,
   margin: 10,
   textDecoration: 'none',
-  height: 100,
-  border: '1px solid rgba(0,0,0,0.1)',
+  height: 90,
+  border: '1px solid rgba(0,0,0,0.06)',
   overflow: 'hidden',
   borderRadius: 6,
-  boxShadow: '0 2px 20px rgba(0,0,0,0.1)',
+  // boxShadow: '0 2px 20px rgba(0,0,0,0.02)',
   backgroundColor: '#fff',
+};
+
+const styleHeading = {
+  margin: 0,
+  padding: 0,
+  fontSize: 20,
+  fontWeight: 500,
+  color: '#333',
+  whiteSpace: 'nowrap',
+  wordBreak: 'keep-all',
+  overflow: 'hidden',
+};
+
+const styleUrl = {
+  whiteSpace: 'nowrap',
+  wordBreak: 'keep-all',
+  overflow: 'hidden',
 };
 
 const Bookmark = ({ href, id, children }) => (
@@ -29,7 +45,8 @@ const Bookmark = ({ href, id, children }) => (
     href={href}
     style={styleLink}
   >
-    {children}
+    <h3 style={styleHeading}>{children}</h3>
+    <span style={styleUrl}>{href}</span>
   </a>
 );
 

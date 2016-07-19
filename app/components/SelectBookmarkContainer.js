@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loadFolders: dispatch(fetchFolders('0')),
+  loadFolders: dispatch(fetchFolders('1')),
   onChange: (folder) => {
     dispatch(changeCurrentFolder(folder));
   },

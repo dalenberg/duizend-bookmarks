@@ -37,7 +37,7 @@ export const fetchFolders = (parentId) => (dispatch) => {
   const allFolders = [];
 
   // Iterate over all folders
-  const filterAllFolders = (folders) => {
+  const filterAllFolders = (folders, depth) => {
     folders
       .filter(item => item.url === undefined)
       .map(folder => {
@@ -45,10 +45,11 @@ export const fetchFolders = (parentId) => (dispatch) => {
         allFolders.push({
           id: folder.id,
           title: folder.title,
+          depth,
         });
 
         // Do it again for all children folders
-        filterAllFolders(folder.children);
+        filterAllFolders(folder.children, depth + 1);
 
         return true;
       });
@@ -56,7 +57,7 @@ export const fetchFolders = (parentId) => (dispatch) => {
 
   // Get folders and dispatch 'em
   chrome.bookmarks.getSubTree(parentId, results => {
-    filterAllFolders(results);
+    filterAllFolders(results, 0);
     dispatch(receiveFolders(parentId, allFolders));
   });
 };
