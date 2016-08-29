@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react';
 import Bookmark from './Bookmark';
-import { TransitionMotion, spring, presets } from 'react-motion';
+import { Motion, TransitionMotion, spring, presets } from 'react-motion';
 
 const propTypes = {
   bookmarks: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
   bookmarks: [],
+  loading: false,
 };
 
 const styleList = {
@@ -23,7 +25,8 @@ const styleEmpty = {
   textAlign: 'center',
   fontSize: 20,
   padding: 30,
-}
+  backgroundColor: 'rgba(0, 0, 0, 0.1)',
+};
 
 const willEnter = () => ({
   height: 0,
@@ -34,10 +37,13 @@ const willLeave = () => ({
 });
 
 const NoBookmarks = () => (
-  <div style={styleEmpty}>
-    <p>No bookmarks in this folder...</p>
-    <p>Select a folder in the right top corner!</p>
-  </div>
+  <Motion defaultStyle={{ opacity: 0, paddingTop: 0 }} style={{ opacity: spring(1), paddingTop: spring(100) }}>
+    {interpolatingStyle => <div style={interpolatingStyle}>
+      <div style={styleEmpty}>
+        <p>No bookmarks in this folder. Select a folder in the right top corner!</p>
+      </div>
+    </div>}
+  </Motion>
 );
 
 const BookmarksList = ({ bookmarks, loading }) => {
@@ -53,7 +59,7 @@ const BookmarksList = ({ bookmarks, loading }) => {
     data: bookmark,
     key: bookmark.id,
     style: {
-      height: spring(110, presets.gentle),
+      height: spring(120, presets.gentle),
     },
   }));
 

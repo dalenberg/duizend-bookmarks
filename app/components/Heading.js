@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 const headingStyle = {
   margin: 0,
   padding: 0,
-  color: '#fff',
+  color: 'rgba(0, 0, 0, 0.7)',
   fontWeight: 300,
   fontSize: 20,
+};
+
+const propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
 const RenderHeading = ({ title }) => (
@@ -21,8 +25,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const Heading = connect(
-  mapStateToProps,
-)(RenderHeading);
+RenderHeading.propTypes = propTypes;
 
-export default Heading;
+export default connect(mapStateToProps)(RenderHeading);

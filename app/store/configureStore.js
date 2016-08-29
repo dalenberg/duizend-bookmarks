@@ -5,7 +5,7 @@ import bookmarksApp from '../reducers';
 
 const store = createStore(bookmarksApp, compose(
   applyMiddleware(thunkMiddleware),
-  persistState(),
+  persistState()
 ));
 
 export default store;

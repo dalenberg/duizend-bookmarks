@@ -7,27 +7,22 @@ const propTypes = {
 };
 
 const styleLink = {
-  display: 'block',
   width: 380,
+  display: 'block',
   boxSizing: 'border-box',
   color: '#ccc',
-  padding: 22,
+  padding: '20px 0',
   margin: 10,
   textDecoration: 'none',
-  height: 90,
-  border: '1px solid rgba(0,0,0,0.06)',
-  overflow: 'hidden',
-  borderRadius: 6,
-  // boxShadow: '0 2px 20px rgba(0,0,0,0.02)',
-  backgroundColor: '#fff',
+  borderTop: '1px solid rgba(0,0,0,0.06)',
 };
 
 const styleHeading = {
   margin: 0,
   padding: 0,
-  fontSize: 20,
+  fontSize: 24,
   fontWeight: 500,
-  color: '#333',
+  color: '#444',
   whiteSpace: 'nowrap',
   wordBreak: 'keep-all',
   overflow: 'hidden',
@@ -37,6 +32,8 @@ const styleUrl = {
   whiteSpace: 'nowrap',
   wordBreak: 'keep-all',
   overflow: 'hidden',
+  marginTop: 4,
+  display: 'block',
 };
 
 const Bookmark = ({ href, id, children }) => (
@@ -45,8 +42,8 @@ const Bookmark = ({ href, id, children }) => (
     href={href}
     style={styleLink}
   >
-    <h3 style={styleHeading}>{children}</h3>
-    <span style={styleUrl}>{href}</span>
+    <h3 style={styleHeading}>{children.length > 30 ? `${children.substr(0, 80)}...` : children}</h3>
+    <span style={styleUrl}>{href.length > 55 ? `${href.substr(0, 52)}...` : href}</span>
   </a>
 );
 

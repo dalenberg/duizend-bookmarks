@@ -9,11 +9,11 @@ const config = {
     filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.jsx'],
   },
   module: {
     loaders: [{
-      test: /\.js$/,
+      test: /(\.jsx\.js)?$/,
       loader: 'babel',
       exclude: /node_modules/,
     }],
