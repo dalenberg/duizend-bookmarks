@@ -15,16 +15,19 @@ const config = {
     publicPath: `${publicPath}/js`,
   },
   resolve: {
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.jsx'],
   },
   module: {
     loaders: [{
-      test: /\.js$/,
+      test: /(\.jsx\.js)?$/,
       loader: 'babel',
       exclude: /node_modules/,
       query: {
         presets: ['react-hmre'],
       },
+    }, {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader',
     }],
   },
   plugins: [

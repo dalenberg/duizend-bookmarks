@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  action: dispatch(fetchBookmarks()),
+  action: () => { dispatch(fetchBookmarks()); },
 });
 
 const BookmarkContainer = connect(
