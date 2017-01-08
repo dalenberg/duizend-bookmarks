@@ -21,10 +21,6 @@ const styles = {
   },
 };
 
-const renderBookmark = (bookmark) => {
-  return <Bookmark key={bookmark.id} {...bookmark} />;
-};
-
 const BookmarkList = ({
   title,
   bookmarks,
@@ -34,7 +30,9 @@ const BookmarkList = ({
       <h1 style={styles.title}>{title}</h1>
     </div>
     <div style={styles.bookmarksList}>
-      {bookmarks.map(renderBookmark)}
+      {bookmarks.map((bookmark) => (
+        <Bookmark key={bookmark.id} {...bookmark} />
+      ))}
     </div>
   </section>
 );

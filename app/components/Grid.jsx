@@ -12,19 +12,15 @@ const styles = {
   },
 };
 
-const renderFolder = (folder) => {
-  return (
-    <div key={folder.id} style={styles.folder}>
-      <Folder folder={folder} />
-    </div>
-  );
-};
-
 const Grid = ({
   folders,
 }) => (
   <div style={styles.app}>
-    {folders.map(renderFolder)}
+    {folders.map((folder) => (
+      <div key={folder.id} style={styles.folder}>
+        <Folder folder={folder} />
+      </div>
+    ))}
   </div>
 );
 
