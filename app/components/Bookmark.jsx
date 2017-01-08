@@ -1,10 +1,5 @@
 import React, { PropTypes } from 'react';
-
-const propTypes = {
-  children: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-};
+import { IBookmark } from '../types';
 
 const styleLink = {
   backgroundColor: '#fff',
@@ -18,17 +13,19 @@ const styleLink = {
   color: '#444',
 };
 
-const Bookmark = ({ href, id, children }) => (
+const Bookmark = ({
+  id,
+  title,
+  url,
+}) => (
   <a
     id={`bookmark_${id}`}
-    href={href}
+    href={url}
     style={styleLink}
-    title={href}
+    title={url}
   >
-    {children.length > 30 ? `${children.substr(0, 80)}...` : children}
+    {title.length > 30 ? `${title.substr(0, 30)}...` : title}
   </a>
 );
-
-Bookmark.propTypes = propTypes;
 
 export default Bookmark;

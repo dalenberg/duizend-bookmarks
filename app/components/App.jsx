@@ -1,11 +1,9 @@
-import React from 'react';
-import BookmarkContainer from '../containers/BookmarkContainer';
-import SelectBookmarkContainer from '../containers/SelectBookmarkContainer';
+import React, { Component } from 'react';
+import Folder from './Folder';
 
 const styles = {
   app: {
     display: 'flex',
-
   },
   folder: {
     width: 300,
@@ -14,18 +12,44 @@ const styles = {
   },
 };
 
-const App = () => (
-  <div style={styles.app}>
-    <div style={styles.folder}>
-      <SelectBookmarkContainer folderId="1" />
-      <BookmarkContainer folderId="1" />
-    </div>
+const activeFolders = [{
+  id: '304',
+  title: 'Stream',
+}, {
+  id: '309',
+  title: 'Watch',
+}];
 
-    <div style={styles.folder}>
-      <SelectBookmarkContainer />
-      <BookmarkContainer />
-    </div>
-  </div>
-);
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      folders: [],
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      folders: activeFolders,
+    });
+  }
+
+  renderFolder(folder) {
+    return (
+      <div key={folder.id} style={styles.folder}>
+        <Folder folder={folder} />
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div style={styles.app}>
+        {this.state.folders.map(this.renderFolder)}
+      </div>
+    );
+  }
+};
 
 export default App;
