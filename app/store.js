@@ -5,23 +5,14 @@ import bookmarks from './reducers/bookmarks';
 
 const logger = createLogger();
 const preloadedState = {
-  bookmarks: [],
-  folders: [],
+  bookmarks: {},
+  folders: {},
   loading: false,
-  activeFolders: [{
-    id: '480',
-    title: 'Reading List',
-  }, {
-    id: '482',
-    title: 'Watch List',
-  }, {
-    id: '1225',
-    title: 'JavaScript',
-  }],
+  activeFolders: [],
 };
 
 const store = createStore(bookmarks, preloadedState, compose(
-  applyMiddleware(thunk, logger),
+  applyMiddleware(thunk, logger)
 ));
 
 export default store;

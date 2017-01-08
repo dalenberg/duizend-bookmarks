@@ -12,15 +12,28 @@ const styles = {
 };
 
 const Grid = ({
+  activeFolders,
   folders,
-  addActiveFolder,
+  addFolder,
 }) => (
   <div style={styles.app}>
-    {folders.map((folder) => (
+    {activeFolders.map((folder) => (
       <div key={folder.id} style={styles.folder}>
         <Folder folder={folder} />
       </div>
     ))}
+    <div style={styles.folder}>
+      <h2>Nieuwe toevoegen</h2>
+      <select onChange={(event) => addFolder(event.target.value)}>
+        {folders.map(folder => (
+          <option
+            key={folder.id}
+            children={folder.title}
+            value={folder.id}
+          />
+        ))}
+      </select>
+    </div>
   </div>
 );
 

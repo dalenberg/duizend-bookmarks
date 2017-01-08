@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchFolders } from '../actions/bookmarks';
+import { getActiveFolders, getAllFolders } from '../selectors';
+import { addActiveFolder, fetchFolders } from '../actions/bookmarks';
 import Grid from '../components/Grid';
 
 class App extends Component {
@@ -11,17 +12,22 @@ class App extends Component {
 
   render() {
     return (
-      <Grid folders={this.props.folders} />
+      <Grid
+        activeFolders={this.props.activeFolders}
+        folders={this.props.folders}
+        addFolder={this.props.addFolder}
+      />
     )
   }
 }
 
 export default connect(
   (state) => ({
-    folders: state.activeFolders,
+    activeFolders: getActiveFolders(state),
+    folders: getAllFolders(state),
   }),
   (dispatch) => ({
     getFolders: () => dispatch(fetchFolders()),
-    // addActiveFolder: (id) => dispatch(addActiveFolder(id)),
+    addFolder: (id) => dispatch(addActiveFolder(id)),
   })
 )(App);

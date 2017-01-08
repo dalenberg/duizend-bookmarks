@@ -4,17 +4,21 @@ import Bookmark from '../components/Bookmark';
 const styles = {
   folder: {
     height: '100vh',
-    overflow: 'auto',
-  },
-  bookmarksList: {
-    padding: 20,
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     backgroundColor: 'blue',
     padding: 20,
+    boxSizing: 'border-box',
     color: '#fff',
+    height: '4rem',
+  },
+  bookmarksList: {
+    padding: 20,
+    height: 'calc(100% - 4rem)',
+    boxSizing: 'border-box',
+    overflow: 'auto',
   },
   title: {
     margin: 0,
@@ -30,10 +34,6 @@ const propTypes = {
   bookmarks: PropTypes.array.isRequired,
 }
 
-const defaultProps = {
-  bookmarks: [],
-}
-
 const BookmarkList = ({
   title,
   bookmarks,
@@ -43,14 +43,21 @@ const BookmarkList = ({
       <h1 style={styles.title}>{title}</h1>
     </div>
     <div style={styles.bookmarksList}>
-      {bookmarks.map((bookmark) => (
-        <Bookmark key={bookmark.id} {...bookmark} />
-      ))}
+      {bookmarks.length === 0 && (
+          <div>Er zijn geen bookmarks in deze map</div>
+      )}
+      {bookmarks.map((bookmark) => {
+        if (bookmark === undefined) {
+          return null;
+        }
+        return (
+          <Bookmark key={bookmark.id} {...bookmark} />
+        );
+      })}
     </div>
   </section>
 );
 
 BookmarkList.propTypes = propTypes;
-BookmarkList.defaultProps = defaultProps;
 
 export default BookmarkList;

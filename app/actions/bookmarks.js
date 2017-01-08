@@ -1,13 +1,14 @@
 import BookmarkService from '../services/bookmarks';
 
-const bookmarkService = new BookmarkService();
-
 // Constants
 export const REQUEST_BOOKMARKS = 'REQUEST_BOOKMARKS';
 export const RECEIVE_BOOKMARKS = 'RECEIVE_BOOKMARKS';
 
-export const REQUEST_DATA = 'REQUEST_DATA';
-export const RECEIVE_DATA = 'RECEIVE_DATA';
+export const REQUEST_FOLDERS = 'REQUEST_FOLDERS';
+export const RECEIVE_FOLDERS = 'RECEIVE_FOLDERS';
+
+export const ADD_ACTIVE_FOLDER = 'ADD_ACTIVE_FOLDER';
+
 
 // Actions
 const requestBookmarks = (id) => ({
@@ -21,17 +22,24 @@ const receiveBookmarks = (id, bookmarks) => ({
   bookmarks,
 });
 
-const requestData = () => ({
-  type: REQUEST_DATA,
+const requestFolders = () => ({
+  type: REQUEST_FOLDERS,
 });
 
-const receiveData = (folders) => ({
-  type: RECEIVE_DATA,
+const receiveFolders = (folders) => ({
+  type: RECEIVE_FOLDERS,
   folders,
+});
+
+const newActiveFolder = (folder) => ({
+  type: ADD_ACTIVE_FOLDER,
+  folder,
 });
 
 // Function
 export const fetchBookmarks = (id) => (dispatch) => {
+  const bookmarkService = new BookmarkService();
+
   dispatch(requestBookmarks(id));
 
   bookmarkService.getBookmarks(id, (bookmarks) => {
@@ -40,9 +48,16 @@ export const fetchBookmarks = (id) => (dispatch) => {
 };
 
 export const fetchFolders = () => (dispatch) => {
-  dispatch(requestData());
+  const bookmarkService = new BookmarkService();
+
+  dispatch(requestFolders());
 
   bookmarkService.getFolders((folders) => {
-    dispatch(receiveData(folders));
+    dispatch(receiveFolders(folders));
   });
-}
+};
+
+export const addActiveFolder = (id) => (dispatch, store) => {
+  const state = store();
+  dispatch(newActiveFolder(state.folders[id]));
+};

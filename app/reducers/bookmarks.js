@@ -1,12 +1,15 @@
+import { appendToObject } from '../helpers';
+
 const initialState = {
-  bookmarks: [],
-  folders: [],
+  bookmarks: {},
+  folders: {},
   loading: false,
   activeFolders: [],
 };
 
 const bookmarks = (state = initialState, action) => {
   switch (action.type) {
+    case 'REQUEST_FOLDERS':
     case 'REQUEST_BOOKMARKS':
       return Object.assign({}, state, {
         loading: true,
@@ -14,19 +17,22 @@ const bookmarks = (state = initialState, action) => {
 
     case 'RECEIVE_BOOKMARKS':
       return Object.assign({}, state, {
-        bookmarks: state.bookmarks.concat(action.bookmarks),
+        bookmarks: appendToObject(state.bookmarks, action.bookmarks),
         loading: false,
       });
 
-    case 'RECEIVE_DATA':
+    case 'RECEIVE_FOLDERS':
       return Object.assign({}, state, {
-        folders: state.folders.concat(action.folders),
+        folders: appendToObject(state.folders, action.folders),
         loading: false,
       });
 
     case 'ADD_ACTIVE_FOLDER':
       return Object.assign({}, state, {
-        activeFolders: state.activeFolders.concat(action.id)
+        activeFolders: [
+          ...state.activeFolders,
+          action.folder,
+        ],
       });
 
     default:

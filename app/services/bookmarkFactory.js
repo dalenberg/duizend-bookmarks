@@ -16,16 +16,22 @@ class BookmarkFactory {
     return {
       id: folder.id,
       title: folder.title,
-      bookmarks: folder.children.map(child => child.id),
+      bookmarks: folder.children
+        .filter(item => item.url !== undefined)
+        .map(child => child.id),
     };
   }
 
-  traverseTree(data) {
+  traverseTree(data, type) {
     data.forEach(item => {
       if (item.children) {
-        this.folders.push(this.factorFolder(item));
-        this.traverseTree(item.children);
-      } else {
+        if (type === 'folders') {
+          this.folders.push(this.factorFolder(item));
+        }
+        this.traverseTree(item.children, type);
+      }
+
+      if (item.url && type === 'bookmarks') {
         this.bookmarks.push(this.factorBookmark(item));
       }
     });
@@ -33,18 +39,13 @@ class BookmarkFactory {
     return this;
   }
 
-  getData() {
-    return {
-      folders: this.folders,
-      bookmarks: this.bookmarks,
-    }
-  }
-
-  getFolders() {
+  getFolders(results) {
+    this.traverseTree(results, 'folders');
     return this.folders;
   }
 
-  getBookmarks() {
+  getBookmarks(results) {
+    this.traverseTree(results, 'bookmarks');
     return this.bookmarks;
   }
 }

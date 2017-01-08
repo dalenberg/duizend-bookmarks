@@ -1,25 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import { getBookmarksByFolder } from '../selectors';
 import { fetchBookmarks } from '../actions/bookmarks';
 import BookmarkList from '../components/BookmarkList';
 
-const getBookmarksByFolder = ({
-  folders,
-  bookmarks,
-}, {
-  folder,
-}) => {
-  const currentFolder = folders.find(f => f.id === folder.id)
-
-  if (!currentFolder) {
-    return [];
-  }
-
-  return currentFolder.bookmarks.map(bookmark => {
-    return bookmarks.find(b => b.id === bookmark);
-  });
-};
+const propTypes = {
+  folder: PropTypes.object,
+  bookmarks: PropTypes.array,
+}
 
 class Folder extends Component {
   componentDidMount() {
@@ -35,6 +24,8 @@ class Folder extends Component {
     );
   }
 };
+
+Folder.propTypes = propTypes;
 
 export default connect(
   (state, props) => ({
