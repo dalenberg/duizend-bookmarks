@@ -1,34 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { fetchFolders } from '../actions/bookmarks';
 import Grid from '../components/Grid';
 
-const activeFolders = [{
-  id: '304',
-  title: 'Stream',
-}, {
-  id: '309',
-  title: 'Watch',
-}];
-
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      folders: [],
-    };
-  }
-
   componentDidMount() {
-    this.setState({
-      folders: activeFolders,
-    });
+    this.props.getFolders();
   }
 
   render() {
     return (
-      <Grid folders={this.state.folders} />
-    );
+      <Grid folders={this.props.folders} />
+    )
   }
-};
+}
 
-export default App;
+export default connect(
+  (state) => ({
+    folders: state.activeFolders,
+  }),
+  (dispatch) => ({
+    getFolders: () => dispatch(fetchFolders()),
+    // addActiveFolder: (id) => dispatch(addActiveFolder(id)),
+  })
+)(App);

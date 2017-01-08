@@ -1,33 +1,46 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { fetchBookmarks } from '../actions/bookmarks';
 import BookmarkList from '../components/BookmarkList';
-import BookmarkService from '../services/bookmarks';
 
-class Folder extends Component {
-  constructor() {
-    super();
+const getBookmarksByFolder = ({
+  folders,
+  bookmarks,
+}, {
+  folder,
+}) => {
+  const currentFolder = folders.find(f => f.id === folder.id)
 
-    this.bookmarkService = new BookmarkService();
-    this.state = {
-      bookmarks: [],
-    };
+  if (!currentFolder) {
+    return [];
   }
 
+  return currentFolder.bookmarks.map(bookmark => {
+    return bookmarks.find(b => b.id === bookmark);
+  });
+};
+
+class Folder extends Component {
   componentDidMount() {
-    this.bookmarkService.getBookmarks(this.props.folder.id, (bookmarks) => {
-      this.setState({
-        bookmarks,
-      });
-    });
+    this.props.getBookmarks(this.props.folder.id);
   }
 
   render() {
     return (
       <BookmarkList
         title={this.props.folder.title}
-        bookmarks={this.state.bookmarks}
+        bookmarks={this.props.bookmarks}
       />
     );
   }
 };
 
-export default Folder;
+export default connect(
+  (state, props) => ({
+    bookmarks: getBookmarksByFolder(state, props),
+  }),
+  (dispatch) => ({
+    getBookmarks: (id) => dispatch(fetchBookmarks(id)),
+  }),
+)(Folder);

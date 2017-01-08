@@ -9,6 +9,7 @@ export type IBookmark = {
 export type IFolder = {
   id: number,
   title: string,
+  bookmarks: [],
 };
 
 export type IState = {

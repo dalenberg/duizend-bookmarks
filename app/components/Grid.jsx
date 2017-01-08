@@ -8,12 +8,12 @@ const styles = {
   folder: {
     width: 300,
     borderRight: '1px solid rgba(0, 0, 0, .1)',
-    height: '100vw',
   },
 };
 
 const Grid = ({
   folders,
+  addActiveFolder,
 }) => (
   <div style={styles.app}>
     {folders.map((folder) => (

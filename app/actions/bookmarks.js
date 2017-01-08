@@ -1,38 +1,48 @@
+import BookmarkService from '../services/bookmarks';
+
+const bookmarkService = new BookmarkService();
+
 // Constants
 export const REQUEST_BOOKMARKS = 'REQUEST_BOOKMARKS';
 export const RECEIVE_BOOKMARKS = 'RECEIVE_BOOKMARKS';
 
+export const REQUEST_DATA = 'REQUEST_DATA';
+export const RECEIVE_DATA = 'RECEIVE_DATA';
+
 // Actions
-const requestBookmarks = (folderId) => ({
+const requestBookmarks = (id) => ({
   type: REQUEST_BOOKMARKS,
-  folderId,
+  id,
 });
 
-const receiveBookmarks = (folderId, bookmarks) => ({
+const receiveBookmarks = (id, bookmarks) => ({
   type: RECEIVE_BOOKMARKS,
-  folderId,
+  id,
   bookmarks,
 });
 
+const requestData = () => ({
+  type: REQUEST_DATA,
+});
+
+const receiveData = (folders) => ({
+  type: RECEIVE_DATA,
+  folders,
+});
+
 // Function
-export const fetchBookmarks = () => (dispatch, getState) => {
-  // Get folder id
-  const state = getState();
-  const folderId = state.active.current;
+export const fetchBookmarks = (id) => (dispatch) => {
+  dispatch(requestBookmarks(id));
 
-  // Dispatch loading action
-  dispatch(requestBookmarks(folderId));
-
-  // Fetch actual bookmarks and dispatch those
-  chrome.bookmarks.getChildren(folderId, results => {
-    const bookmarks = results
-      .filter(item => item.url !== undefined)
-      .map(bookmark => ({
-        id: bookmark.id,
-        title: bookmark.title,
-        url: bookmark.url,
-      }));
-
-    dispatch(receiveBookmarks(folderId, bookmarks));
+  bookmarkService.getBookmarks(id, (bookmarks) => {
+    dispatch(receiveBookmarks(id, bookmarks));
   });
 };
+
+export const fetchFolders = () => (dispatch) => {
+  dispatch(requestData());
+
+  bookmarkService.getFolders((folders) => {
+    dispatch(receiveData(folders));
+  });
+}

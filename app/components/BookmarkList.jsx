@@ -2,6 +2,10 @@ import React, { PropTypes } from 'react';
 import Bookmark from '../components/Bookmark';
 
 const styles = {
+  folder: {
+    height: '100vh',
+    overflow: 'auto',
+  },
   bookmarksList: {
     padding: 20,
   },
@@ -21,11 +25,20 @@ const styles = {
   },
 };
 
+const propTypes = {
+  title: PropTypes.string.isRequired,
+  bookmarks: PropTypes.array.isRequired,
+}
+
+const defaultProps = {
+  bookmarks: [],
+}
+
 const BookmarkList = ({
   title,
   bookmarks,
 }) => (
-  <section>
+  <section style={styles.folder}>
     <div style={styles.header}>
       <h1 style={styles.title}>{title}</h1>
     </div>
@@ -36,5 +49,8 @@ const BookmarkList = ({
     </div>
   </section>
 );
+
+BookmarkList.propTypes = propTypes;
+BookmarkList.defaultProps = defaultProps;
 
 export default BookmarkList;

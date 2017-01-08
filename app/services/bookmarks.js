@@ -1,23 +1,19 @@
-class BookmarkFactory {
-  factorBookmarks(result) {
-    return result
-      .filter(item => item.url !== undefined)
-      .map(bookmark => ({
-        id: bookmark.id,
-        title: bookmark.title,
-        url: bookmark.url,
-      }));
-  }
-}
+import BookmarkFactory from './bookmarkFactory';
 
 class BookmarkService {
   constructor() {
     this.bookmarkFactory = new BookmarkFactory();
   }
 
+  getFolders(callback) {
+    chrome.bookmarks.getTree((results) => {
+      callback(this.bookmarkFactory.traverseTree(results).getFolders());
+    });
+  }
+
   getBookmarks(folder, callback) {
     chrome.bookmarks.getChildren(folder, (results) => {
-      callback(this.bookmarkFactory.factorBookmarks(results));
+      callback(this.bookmarkFactory.traverseTree(results).getBookmarks());
     });
   }
 };
