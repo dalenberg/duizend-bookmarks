@@ -18,7 +18,7 @@ const receiveBookmarks = (folderId, bookmarks) => ({
 export const fetchBookmarks = () => (dispatch, getState) => {
   // Get folder id
   const state = getState();
-  const folderId = state.folders.current;
+  const folderId = state.active.current;
 
   // Dispatch loading action
   dispatch(requestBookmarks(folderId));

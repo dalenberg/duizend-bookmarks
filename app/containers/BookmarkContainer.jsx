@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import BookmarksList from './BookmarksList';
+import BookmarksList from '../components/BookmarksList';
 import { fetchBookmarks } from '../actions/bookmarks';
 
 const mapStateToProps = (state) => ({
@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  action: () => { dispatch(fetchBookmarks()); },
+  action: () => dispatch(fetchBookmarks()),
 });
 
 const BookmarkContainer = connect(

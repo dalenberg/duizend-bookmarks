@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const headingStyle = {
   margin: 0,
   padding: 0,
-  color: 'rgba(0, 0, 0, 0.7)',
+  color: '#fff',
   fontWeight: 300,
   fontSize: 20,
 };

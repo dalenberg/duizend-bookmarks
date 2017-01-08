@@ -1,7 +1,7 @@
 const initialState = {
   items: [],
   loading: false,
-  current: '0',
+  current: [],
 };
 
 const folders = (state = initialState, action) => {
@@ -16,11 +16,6 @@ const folders = (state = initialState, action) => {
       return Object.assign({}, state, {
         items: action.folders,
         loading: false,
-      });
-
-    case 'SET_CURRENT_FOLDER':
-      return Object.assign({}, state, {
-        current: action.folderId,
       });
 
     default:
