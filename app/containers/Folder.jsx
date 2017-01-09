@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { getBookmarksByFolder } from '../selectors';
-import { fetchBookmarks } from '../actions/bookmarks';
+import { deleteActiveBookmark, fetchBookmarks } from '../actions/bookmarks';
 import BookmarkList from '../components/BookmarkList';
 
 const propTypes = {
@@ -18,8 +18,9 @@ class Folder extends Component {
   render() {
     return (
       <BookmarkList
-        title={this.props.folder.title}
+        folder={this.props.folder}
         bookmarks={this.props.bookmarks}
+        deleteBookmark={this.props.onDeleteBookmark}
       />
     );
   }
@@ -32,6 +33,7 @@ export default connect(
     bookmarks: getBookmarksByFolder(state, props),
   }),
   (dispatch) => ({
+    onDeleteBookmark: (id) => dispatch(deleteActiveBookmark(id)),
     getBookmarks: (id) => dispatch(fetchBookmarks(id)),
   }),
 )(Folder);

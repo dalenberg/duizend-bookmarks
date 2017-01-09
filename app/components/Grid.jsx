@@ -3,11 +3,9 @@ import Folder from '../containers/Folder';
 
 const styles = {
   app: {
-    display: 'flex',
-  },
-  folder: {
-    width: 300,
-    borderRight: '1px solid rgba(255, 255, 255, 1)',
+    minWidth: 300,
+    width: '60%',
+    margin: '2rem auto',
   },
 };
 
@@ -18,7 +16,7 @@ const Grid = ({
 }) => (
   <div style={styles.app}>
     {activeFolders.map((folder) => (
-      <div key={folder.id} style={styles.folder}>
+      <div key={folder.id}>
         <Folder folder={folder} />
       </div>
     ))}

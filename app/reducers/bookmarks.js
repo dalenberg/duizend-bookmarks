@@ -35,6 +35,12 @@ const bookmarks = (state = initialState, action) => {
         ],
       });
 
+    case 'REMOVE_ACTIVE_FOLDER': {
+      return Object.assign({}, state, {
+        activeFolders: state.activeFolders.filter(folder => folder.id !== action.id),
+      });
+    }
+
     default:
       return state;
   }

@@ -8,7 +8,7 @@ export const REQUEST_FOLDERS = 'REQUEST_FOLDERS';
 export const RECEIVE_FOLDERS = 'RECEIVE_FOLDERS';
 
 export const ADD_ACTIVE_FOLDER = 'ADD_ACTIVE_FOLDER';
-
+export const REMOVE_ACTIVE_FOLDER = 'REMOVE_ACTIVE_FOLDER';
 
 // Actions
 const requestBookmarks = (id) => ({
@@ -34,6 +34,11 @@ const receiveFolders = (folders) => ({
 const newActiveFolder = (folder) => ({
   type: ADD_ACTIVE_FOLDER,
   folder,
+});
+
+export const deleteActiveBookmark = (id) => ({
+  type: REMOVE_ACTIVE_FOLDER,
+  id,
 });
 
 // Function

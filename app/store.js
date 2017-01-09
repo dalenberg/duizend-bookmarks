@@ -7,7 +7,7 @@ import { initialState } from './reducers/bookmarks';
 
 const logger = createLogger();
 const store = createStore(bookmarks, initialState, compose(
-  applyMiddleware(logger, thunk),
+  applyMiddleware(thunk),
   persistState(),
 ));
 
