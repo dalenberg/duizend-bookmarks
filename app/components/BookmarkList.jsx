@@ -4,28 +4,29 @@ import Bookmark from '../components/Bookmark';
 const styles = {
   folder: {
     height: '100vh',
+    minWidth: '300px',
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
-    backgroundColor: 'blue',
-    padding: 20,
+    backgroundColor: 'rgba(0, 0, 0, .1)',
+    padding: '15px 25px',
     boxSizing: 'border-box',
     color: '#fff',
-    height: '4rem',
+    height: '3rem',
   },
   bookmarksList: {
-    padding: 20,
-    height: 'calc(100% - 4rem)',
+    padding: 10,
+    height: 'calc(100% - 3rem)',
     boxSizing: 'border-box',
     overflow: 'auto',
   },
   title: {
     margin: 0,
     padding: 0,
-    color: '#fff',
-    fontWeight: 300,
-    fontSize: 20,
+    color: 'rgba(0, 0, 0, .5)',
+    fontWeight: 400,
+    fontSize: 16,
   },
 };
 

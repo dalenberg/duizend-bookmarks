@@ -6,11 +6,11 @@ const styleLink = {
   display: 'block',
   boxSizing: 'border-box',
   padding: 15,
-  marginBottom: 20,
+  marginBottom: 10,
   textDecoration: 'none',
-  fontSize: 18,
-  fontWeight: 500,
-  color: '#444',
+  fontSize: 12,
+  fontWeight: 400,
+  color: '#666',
 };
 
 const Bookmark = ({
@@ -24,7 +24,7 @@ const Bookmark = ({
     style={styleLink}
     title={url}
   >
-    {title.length > 30 ? `${title.substr(0, 30)}...` : title}
+    {title.length > 40 ? `${title.substr(0, 30)}...` : title}
   </a>
 );
 

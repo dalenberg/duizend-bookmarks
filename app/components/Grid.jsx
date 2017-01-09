@@ -7,7 +7,7 @@ const styles = {
   },
   folder: {
     width: 300,
-    borderRight: '1px solid rgba(0, 0, 0, .1)',
+    borderRight: '1px solid rgba(255, 255, 255, 1)',
   },
 };
 

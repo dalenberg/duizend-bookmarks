@@ -1,6 +1,6 @@
 import { appendToObject } from '../helpers';
 
-const initialState = {
+export const initialState = {
   bookmarks: {},
   folders: {},
   loading: false,

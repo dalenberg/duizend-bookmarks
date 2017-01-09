@@ -59,5 +59,7 @@ export const fetchFolders = () => (dispatch) => {
 
 export const addActiveFolder = (id) => (dispatch, store) => {
   const state = store();
-  dispatch(newActiveFolder(state.folders[id]));
+  const folder = state.folders[id];
+
+  dispatch(newActiveFolder(folder));
 };
