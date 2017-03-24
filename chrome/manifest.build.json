@@ -3,7 +3,8 @@
   "description": "Display the bookmarks you want on the new tab page",
   "version": "0.2",
   "permissions": [
-    "bookmarks"
+    "bookmarks",
+    "chrome://favicon/"
   ],
   "incognito": "split",
   "chrome_url_overrides": {
@@ -13,5 +14,5 @@
     "index.html"
   ],
   "manifest_version": 2,
-  "content_security_policy": "font-src https://themes.googleusercontent.com; default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
+  "content_security_policy": "font-src https://themes.googleusercontent.com; default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' chrome://favicon/ data:;"
 }

@@ -3,10 +3,31 @@ import Folder from '../containers/Folder';
 
 const styles = {
   app: {
-    minWidth: 300,
-    width: '60%',
-    margin: '2rem auto',
+    display: 'flex',
+    flexWrap: 'nowrap',
+    marginLeft: 10,
+    marginRight: 10,
+    overflow: 'scroll',
   },
+  folder: {
+    flexShrink: 0,
+    width: 330,
+    margin: 10,
+  },
+  title: {
+    margin: 0,
+    fontSize: 16,
+    fontWeight: 500
+  },
+  header: {
+    padding: 20
+  },
+  new: {
+    backgroundColor: '#fff',
+    boxShadow: '0 3px 5px rgba(0, 0, 0, .04)',
+    borderRadius: 4,
+    padding: 20
+  }
 };
 
 const Grid = ({
@@ -16,21 +37,27 @@ const Grid = ({
 }) => (
   <div style={styles.app}>
     {activeFolders.map((folder) => (
-      <div key={folder.id}>
+      <div style={styles.folder} key={folder.id}>
         <Folder folder={folder} />
       </div>
     ))}
     <div style={styles.folder}>
-      <h2>Nieuwe toevoegen</h2>
-      <select onChange={(event) => addFolder(event.target.value)}>
-        {folders.map(folder => (
-          <option
-            key={folder.id}
-            children={folder.title}
-            value={folder.id}
-          />
-        ))}
-      </select>
+      <div style={styles.header}>
+        <h2 style={styles.title}>Nieuw</h2>
+      </div>
+
+      <div style={styles.new}>
+        <p>Selecteer een map om toe te voegen</p>
+        <select onChange={(event) => addFolder(event.target.value)}>
+          {folders.map(folder => (
+            <option
+              key={folder.id}
+              children={folder.title}
+              value={folder.id}
+            />
+          ))}
+        </select>
+      </div>
     </div>
   </div>
 );

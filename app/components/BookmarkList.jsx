@@ -4,34 +4,26 @@ import Bookmark from '../components/Bookmark';
 const styles = {
   header: {
     display: 'flex',
-    padding: 10,
-    boxSizing: 'border-box',
-    color: '#fff',
+    justifyContent: 'space-between',
+    padding: 20,
   },
   bookmarksList: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    marginBottom: 30,
+    backgroundColor: '#fff',
+    boxShadow: '0 3px 5px rgba(0, 0, 0, .04)',
+    borderRadius: 4,
+    overflow: 'auto',
+    maxHeight: '90vh'
   },
   title: {
     margin: 0,
-    padding: 0,
-    color: 'blue',
-    fontWeight: 600,
-    fontSize: 20,
+    fontSize: 16,
+    fontWeight: 500
   },
   delete: {
-    color: 'rgba(0, 0, 255, .2)',
-    borderColor: 'rgba(0, 0, 255, .2)',
-    borderWidth: 2,
-    borderStyle: 'solid',
-    fontWeight: 600,
-    display: 'block',
-    padding: '5px 8px',
-    lineHeight: 1,
-    fontSize: 14,
-    marginLeft: 10,
-    cursor: 'pointer',
+    cursor: 'pointer'
+  },
+  empty: {
+    padding: 20,
   },
 };
 
@@ -53,13 +45,10 @@ const BookmarkList = ({
     </div>
     <div style={styles.bookmarksList}>
       {bookmarks.length === 0 && (
-          <div>Er zijn geen bookmarks in deze map</div>
+        <div style={styles.empty}>Er zijn geen bookmarks in deze map</div>
       )}
       {bookmarks.map((bookmark) => {
-        if (bookmark === undefined) {
-          return null;
-        }
-        return (
+        return bookmark === undefined ? null : (
           <Bookmark key={bookmark.id} {...bookmark} />
         );
       })}
