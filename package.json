@@ -1,6 +1,6 @@
 {
   "name": "bookmarks",
-  "version": "0.3",
+  "version": "0.3.0",
   "description": "Display the bookmarks you want on the new tab page",
   "author": "Tom Dalenberg",
   "license": "MIT",
