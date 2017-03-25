@@ -1,7 +1,7 @@
 {
   "name": "Duizend Bookmarks",
   "description": "Display the bookmarks you want on the new tab page",
-  "version": "0.2",
+  "version": "0.3",
   "permissions": [
     "bookmarks",
     "chrome://favicon/"
