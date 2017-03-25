@@ -1,4 +1,4 @@
-import { asArray } from '../helpers';
+import { asArray } from './helpers';
 
 export const getActiveFolders = (state) => state.activeFolders;
 export const getAllFolders = (state) => asArray(state.folders);

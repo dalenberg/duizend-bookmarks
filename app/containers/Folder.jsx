@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { getBookmarksByFolder } from '../selectors';
-import { deleteActiveBookmark, fetchBookmarks } from '../actions/bookmarks';
+import { deleteActiveBookmark, fetchBookmarks } from '../actions';
 import BookmarkList from '../components/BookmarkList';
 
 const propTypes = {

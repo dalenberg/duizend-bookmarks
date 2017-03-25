@@ -1,10 +1,6 @@
 {
   "extends": [
     "airbnb",
-    "plugin:flowtype/recommended"
-  ],
-  "plugins": [
-    "flowtype"
   ],
   "env": {
     "shelljs": true

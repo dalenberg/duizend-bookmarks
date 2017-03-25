@@ -1,4 +1,5 @@
-import { appendToObject } from '../helpers';
+import { appendToObject } from './helpers';
+import { constants } from './actions';
 
 export const initialState = {
   bookmarks: {},
@@ -9,25 +10,25 @@ export const initialState = {
 
 const bookmarks = (state = initialState, action) => {
   switch (action.type) {
-    case 'REQUEST_FOLDERS':
-    case 'REQUEST_BOOKMARKS':
+    case constants.REQUEST_FOLDERS:
+    case constants.REQUEST_BOOKMARKS:
       return Object.assign({}, state, {
         loading: true,
       });
 
-    case 'RECEIVE_BOOKMARKS':
+    case constants.RECEIVE_BOOKMARKS:
       return Object.assign({}, state, {
         bookmarks: appendToObject(state.bookmarks, action.bookmarks),
         loading: false,
       });
 
-    case 'RECEIVE_FOLDERS':
+    case constants.RECEIVE_FOLDERS:
       return Object.assign({}, state, {
         folders: appendToObject(state.folders, action.folders),
         loading: false,
       });
 
-    case 'ADD_ACTIVE_FOLDER':
+    case constants.ADD_ACTIVE_FOLDER:
       return Object.assign({}, state, {
         activeFolders: [
           ...state.activeFolders,
@@ -35,7 +36,7 @@ const bookmarks = (state = initialState, action) => {
         ],
       });
 
-    case 'REMOVE_ACTIVE_FOLDER': {
+    case constants.REMOVE_ACTIVE_FOLDER: {
       return Object.assign({}, state, {
         activeFolders: state.activeFolders.filter(folder => folder.id !== action.id),
       });

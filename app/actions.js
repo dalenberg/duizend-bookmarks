@@ -1,43 +1,44 @@
-import BookmarkService from '../services/bookmarks';
+import BookmarkService from './services/bookmarks';
 
 // Constants
-export const REQUEST_BOOKMARKS = 'REQUEST_BOOKMARKS';
-export const RECEIVE_BOOKMARKS = 'RECEIVE_BOOKMARKS';
+export const constants = {
+  REQUEST_BOOKMARKS: 'REQUEST_BOOKMARKS',
+  RECEIVE_BOOKMARKS: 'RECEIVE_BOOKMARKS',
+  REQUEST_FOLDERS: 'REQUEST_FOLDERS',
+  RECEIVE_FOLDERS: 'RECEIVE_FOLDERS',
+  ADD_ACTIVE_FOLDER: 'ADD_ACTIVE_FOLDER',
+  REMOVE_ACTIVE_FOLDER: 'REMOVE_ACTIVE_FOLDER',
+};
 
-export const REQUEST_FOLDERS = 'REQUEST_FOLDERS';
-export const RECEIVE_FOLDERS = 'RECEIVE_FOLDERS';
-
-export const ADD_ACTIVE_FOLDER = 'ADD_ACTIVE_FOLDER';
-export const REMOVE_ACTIVE_FOLDER = 'REMOVE_ACTIVE_FOLDER';
 
 // Actions
 const requestBookmarks = (id) => ({
-  type: REQUEST_BOOKMARKS,
+  type: constants.REQUEST_BOOKMARKS,
   id,
 });
 
 const receiveBookmarks = (id, bookmarks) => ({
-  type: RECEIVE_BOOKMARKS,
+  type: constants.RECEIVE_BOOKMARKS,
   id,
   bookmarks,
 });
 
 const requestFolders = () => ({
-  type: REQUEST_FOLDERS,
+  type: constants.REQUEST_FOLDERS,
 });
 
 const receiveFolders = (folders) => ({
-  type: RECEIVE_FOLDERS,
+  type: constants.RECEIVE_FOLDERS,
   folders,
 });
 
 const newActiveFolder = (folder) => ({
-  type: ADD_ACTIVE_FOLDER,
+  type: constants.ADD_ACTIVE_FOLDER,
   folder,
 });
 
 export const deleteActiveBookmark = (id) => ({
-  type: REMOVE_ACTIVE_FOLDER,
+  type: constants.REMOVE_ACTIVE_FOLDER,
   id,
 });
 

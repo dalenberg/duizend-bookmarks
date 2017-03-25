@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { IBookmark } from '../types';
 
 const styles = {
   link: {
