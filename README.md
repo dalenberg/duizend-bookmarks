@@ -1,4 +1,7 @@
-# Duizend Bookmarks
+# Duizend Bookmarks (Work in Progress)
+
+## Download
+[Download plugin from the Chrome Webstore](https://chrome.google.com/webstore/detail/duizend-bookmarks/kmnfikmmhcddkjpgmpohgoihcpdiankj)
 
 ## Install
 Run `npm install` and `npm run dev` to start the development server.
