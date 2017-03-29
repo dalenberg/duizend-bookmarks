@@ -5,29 +5,34 @@ const styles = {
   app: {
     display: 'flex',
     flexWrap: 'nowrap',
-    marginLeft: 10,
-    marginRight: 10,
-    overflow: 'scroll',
+    paddingLeft: 10,
   },
   folder: {
     flexShrink: 0,
-    width: 330,
-    margin: 10,
+    width: 300,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   title: {
     margin: 0,
     fontSize: 16,
-    fontWeight: 500
+    fontWeight: 500,
   },
   header: {
-    padding: 20
+    padding: 20,
   },
   new: {
     backgroundColor: '#fff',
     boxShadow: '0 3px 5px rgba(0, 0, 0, .04)',
     borderRadius: 4,
-    padding: 20
-  }
+    padding: 20,
+  },
+};
+
+const propTypes = {
+  activeFolders: PropTypes.array,
+  folders: PropTypes.array,
+  addFolder: PropTypes.func,
 };
 
 const Grid = ({
@@ -61,5 +66,7 @@ const Grid = ({
     </div>
   </div>
 );
+
+Grid.propTypes = propTypes;
 
 export default Grid;

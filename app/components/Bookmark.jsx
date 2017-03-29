@@ -6,13 +6,26 @@ const styles = {
     alignItems: 'center',
     padding: 20,
     fontSize: 14,
-    borderBottom: '1px solid #ddd',
+    borderBottom: '1px solid #f0f0f0',
     color: '#333',
-    textDecoration: 'none'
+    textDecoration: 'none',
   },
   image: {
     marginRight: 5,
-  }
+    width: 16,
+    height: 16,
+  },
+  text: {
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+};
+
+const propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 const Bookmark = ({
@@ -26,9 +39,11 @@ const Bookmark = ({
     style={styles.link}
     title={url}
   >
-    <img style={styles.image} src={`chrome://favicon/${url}`} />
-    <span style={styles.text}>{title.length > 37 ? `${title.substr(0, 34)}...` : title}</span>
+    <img style={styles.image} src={`chrome://favicon/${url}`} alt={`Favicon of ${url}`} />
+    <span style={styles.text}>{title}</span>
   </a>
 );
+
+Bookmark.propTypes = propTypes;
 
 export default Bookmark;

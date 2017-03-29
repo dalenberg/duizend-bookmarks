@@ -1,4 +1,4 @@
-class BookmarkFactory {
+export default class ChromeBookmarkFactory {
   constructor() {
     this.folders = [];
     this.bookmarks = [];
@@ -49,5 +49,3 @@ class BookmarkFactory {
     return this.bookmarks;
   }
 }
-
-export default BookmarkFactory;

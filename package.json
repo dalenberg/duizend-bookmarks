@@ -22,7 +22,7 @@
   "scripts": {
     "dev": "node webpack/server.dev",
     "build": "node webpack/server.build",
-    "lint": "eslint ."
+    "lint": "eslint --ext .jsx, .js ."
   },
   "dependencies": {
     "express": "^4.14.0",

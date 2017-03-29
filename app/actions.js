@@ -1,6 +1,8 @@
-import BookmarkService from './services/bookmarks';
+import ChromeBookmarkService from './services/chromeBookmarks';
 
-// Constants
+const bookmarkService = new ChromeBookmarkService();
+
+
 export const constants = {
   REQUEST_BOOKMARKS: 'REQUEST_BOOKMARKS',
   RECEIVE_BOOKMARKS: 'RECEIVE_BOOKMARKS',
@@ -10,8 +12,6 @@ export const constants = {
   REMOVE_ACTIVE_FOLDER: 'REMOVE_ACTIVE_FOLDER',
 };
 
-
-// Actions
 const requestBookmarks = (id) => ({
   type: constants.REQUEST_BOOKMARKS,
   id,
@@ -42,10 +42,7 @@ export const deleteActiveBookmark = (id) => ({
   id,
 });
 
-// Function
 export const fetchBookmarks = (id) => (dispatch) => {
-  const bookmarkService = new BookmarkService();
-
   dispatch(requestBookmarks(id));
 
   bookmarkService.getBookmarks(id, (bookmarks) => {
@@ -54,8 +51,6 @@ export const fetchBookmarks = (id) => (dispatch) => {
 };
 
 export const fetchFolders = () => (dispatch) => {
-  const bookmarkService = new BookmarkService();
-
   dispatch(requestFolders());
 
   bookmarkService.getFolders((folders) => {
@@ -64,8 +59,5 @@ export const fetchFolders = () => (dispatch) => {
 };
 
 export const addActiveFolder = (id) => (dispatch, store) => {
-  const state = store();
-  const folder = state.folders[id];
-
-  dispatch(newActiveFolder(folder));
+  dispatch(newActiveFolder(store().folders[id]));
 };

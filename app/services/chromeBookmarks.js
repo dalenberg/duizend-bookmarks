@@ -1,8 +1,8 @@
-import BookmarkFactory from './bookmarkFactory';
+import ChromeBookmarkFactory from './chromeBookmarkFactory';
 
-class BookmarkService {
+export default class ChromeBookmarkService {
   constructor() {
-    this.bookmarkFactory = new BookmarkFactory();
+    this.bookmarkFactory = new ChromeBookmarkFactory();
   }
 
   getFolders(callback) {
@@ -17,5 +17,3 @@ class BookmarkService {
     });
   }
 }
-
-export default BookmarkService;

@@ -1,14 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import BookmarkList from '../components/BookmarkList';
 
 import { getBookmarksByFolder } from '../selectors';
 import { deleteActiveBookmark, fetchBookmarks } from '../actions';
-import BookmarkList from '../components/BookmarkList';
 
 const propTypes = {
   folder: PropTypes.object,
   bookmarks: PropTypes.array,
-}
+  deleteBookmark: PropTypes.func,
+  getBookmarks: PropTypes.func,
+  onDeleteBookmark: PropTypes.func,
+};
+
+const mapStateToProps = (state, props) => ({
+  bookmarks: getBookmarksByFolder(state, props),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onDeleteBookmark: (id) => dispatch(deleteActiveBookmark(id)),
+  getBookmarks: (id) => dispatch(fetchBookmarks(id)),
+});
 
 class Folder extends Component {
   componentDidMount() {
@@ -24,16 +36,11 @@ class Folder extends Component {
       />
     );
   }
-};
+}
 
 Folder.propTypes = propTypes;
 
 export default connect(
-  (state, props) => ({
-    bookmarks: getBookmarksByFolder(state, props),
-  }),
-  (dispatch) => ({
-    onDeleteBookmark: (id) => dispatch(deleteActiveBookmark(id)),
-    getBookmarks: (id) => dispatch(fetchBookmarks(id)),
-  }),
+  mapStateToProps,
+  mapDispatchToProps
 )(Folder);

@@ -1,9 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Grid from '../components/Grid';
 
 import { getActiveFolders, getAllFolders } from '../selectors';
 import { addActiveFolder, fetchFolders } from '../actions';
-import Grid from '../components/Grid';
+
+const propTypes = {
+  getFolders: PropTypes.func,
+  activeFolders: PropTypes.array,
+  folders: PropTypes.array,
+  addFolder: PropTypes.func,
+};
+
+const mapStateToProps = (state) => ({
+  activeFolders: getActiveFolders(state),
+  folders: getAllFolders(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getFolders: () => dispatch(fetchFolders()),
+  addFolder: (id) => dispatch(addActiveFolder(id)),
+});
 
 class App extends Component {
   componentDidMount() {
@@ -17,17 +34,13 @@ class App extends Component {
         folders={this.props.folders}
         addFolder={this.props.addFolder}
       />
-    )
+    );
   }
 }
 
+App.propTypes = propTypes;
+
 export default connect(
-  (state) => ({
-    activeFolders: getActiveFolders(state),
-    folders: getAllFolders(state),
-  }),
-  (dispatch) => ({
-    getFolders: () => dispatch(fetchFolders()),
-    addFolder: (id) => dispatch(addActiveFolder(id)),
-  })
+  mapStateToProps,
+  mapDispatchToProps
 )(App);

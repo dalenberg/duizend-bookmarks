@@ -5,22 +5,28 @@ const styles = {
   header: {
     display: 'flex',
     justifyContent: 'space-between',
-    padding: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    height: 60,
+    alignItems: 'center',
   },
   bookmarksList: {
+    overflow: 'auto',
+    maxHeight: 'calc(100vh - 100px)',
     backgroundColor: '#fff',
     boxShadow: '0 3px 5px rgba(0, 0, 0, .04)',
-    borderRadius: 4,
-    overflow: 'auto',
-    maxHeight: '90vh'
+    borderRadius: 3,
   },
   title: {
     margin: 0,
     fontSize: 16,
-    fontWeight: 500
+    fontWeight: 500,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
   delete: {
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   empty: {
     padding: 20,
@@ -31,12 +37,12 @@ const propTypes = {
   folder: PropTypes.object.isRequired,
   bookmarks: PropTypes.array.isRequired,
   deleteBookmark: PropTypes.func.isRequired,
-}
+};
 
 const BookmarkList = ({
   folder,
   bookmarks,
-  deleteBookmark
+  deleteBookmark,
 }) => (
   <section>
     <div style={styles.header}>
@@ -47,11 +53,9 @@ const BookmarkList = ({
       {bookmarks.length === 0 && (
         <div style={styles.empty}>Er zijn geen bookmarks in deze map</div>
       )}
-      {bookmarks.map((bookmark) => {
-        return bookmark === undefined ? null : (
-          <Bookmark key={bookmark.id} {...bookmark} />
-        );
-      })}
+      {bookmarks.map((bookmark) => (bookmark &&
+        <Bookmark key={bookmark.id} {...bookmark} />
+      ))}
     </div>
   </section>
 );
