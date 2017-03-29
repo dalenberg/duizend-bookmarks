@@ -47,11 +47,11 @@ const BookmarkList = ({
   <section>
     <div style={styles.header}>
       <h1 style={styles.title}>{folder.title}</h1>
-      <a style={styles.delete} onClick={() => deleteBookmark(folder.id)}>x</a>
+      <span style={styles.delete} onClick={() => deleteBookmark(folder.id)}>x</span>
     </div>
     <div style={styles.bookmarksList}>
       {bookmarks.length === 0 && (
-        <div style={styles.empty}>Er zijn geen bookmarks in deze map</div>
+        <div style={styles.empty}>{chrome.i18n.getMessage('nobookmarks')}</div>
       )}
       {bookmarks.map((bookmark) => (bookmark &&
         <Bookmark key={bookmark.id} {...bookmark} />

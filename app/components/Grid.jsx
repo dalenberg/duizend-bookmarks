@@ -48,11 +48,11 @@ const Grid = ({
     ))}
     <div style={styles.folder}>
       <div style={styles.header}>
-        <h2 style={styles.title}>Nieuw</h2>
+        <h2 style={styles.title}>{chrome.i18n.getMessage('newfolder')}</h2>
       </div>
 
       <div style={styles.new}>
-        <p>Selecteer een map om toe te voegen</p>
+        <p>{chrome.i18n.getMessage('selectfolder')}</p>
         <select onChange={(event) => addFolder(event.target.value)}>
           {folders.map(folder => (
             <option

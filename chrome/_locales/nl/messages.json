@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "Duizend Bookmarks"
+  },
+  "extDesc": {
+    "message": "De bladwijzers die jij wil iedere keer als je een tab opent"
+  },
+  "newfolder": {
+    "message": "Nieuwe map toevoegen"
+  },
+  "selectfolder": {
+    "message": "Selecteer een map"
+  },
+  "nobookmarks": {
+    "message": "Er zijn geen bladwijzers gevonden in deze map"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "A lot of bookmarks"
+  },
+  "extDesc": {
+    "message": "Display the bookmarks you want on the new tab page"
+  },
+  "newfolder": {
+    "message": "Add new folder"
+  },
+  "selectfolder": {
+    "message": "Select a folder"
+  },
+  "nobookmarks": {
+    "message": "No bookmarks have been found in this folder"
+  }
+}
