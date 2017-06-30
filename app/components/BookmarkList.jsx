@@ -27,6 +27,14 @@ const styles = {
   },
   delete: {
     cursor: 'pointer',
+    width: 16,
+    height: 16,
+    fontSize: 12,
+    color: '#ddd',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    borderRadius: 100,
+    border: '2px solid #ddd'
   },
   empty: {
     padding: 20,
