@@ -2,6 +2,12 @@ import React, { PropTypes } from 'react';
 import Bookmark from '../components/Bookmark';
 
 const styles = {
+  folder: {
+    flexShrink: 0,
+    width: 330,
+    margin: 10,
+    cursor: 'move',
+  },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -38,7 +44,7 @@ const BookmarkList = ({
   bookmarks,
   deleteBookmark
 }) => (
-  <section>
+  <section style={styles.folder}>
     <div style={styles.header}>
       <h1 style={styles.title}>{folder.title}</h1>
       <a style={styles.delete} onClick={() => deleteBookmark(folder.id)}>x</a>

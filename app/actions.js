@@ -8,6 +8,7 @@ export const constants = {
   RECEIVE_FOLDERS: 'RECEIVE_FOLDERS',
   ADD_ACTIVE_FOLDER: 'ADD_ACTIVE_FOLDER',
   REMOVE_ACTIVE_FOLDER: 'REMOVE_ACTIVE_FOLDER',
+  MOVE_ACTIVE_FOLDERS: 'MOVE_ACTIVE_FOLDERS',
 };
 
 
@@ -40,6 +41,12 @@ const newActiveFolder = (folder) => ({
 export const deleteActiveBookmark = (id) => ({
   type: constants.REMOVE_ACTIVE_FOLDER,
   id,
+});
+
+export const moveActiveFolders = (from, to) => ({
+  type: constants.MOVE_ACTIVE_FOLDERS,
+  from,
+  to,
 });
 
 // Function
