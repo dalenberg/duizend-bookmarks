@@ -1,4 +1,4 @@
-import { appendToObject } from './helpers';
+import { appendToObject, move } from './helpers';
 import { constants } from './actions';
 
 export const initialState = {
@@ -39,6 +39,12 @@ const bookmarks = (state = initialState, action) => {
     case constants.REMOVE_ACTIVE_FOLDER: {
       return Object.assign({}, state, {
         activeFolders: state.activeFolders.filter(folder => folder.id !== action.id),
+      });
+    }
+
+    case constants.MOVE_ACTIVE_FOLDERS: {
+      return Object.assign({}, state, {
+        activeFolders: move(state.activeFolders, action.from, action.to),
       });
     }
 

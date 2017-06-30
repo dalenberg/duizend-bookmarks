@@ -13,3 +13,15 @@ export const appendToObject = (object, items) => {
 
   return newObject;
 };
+
+
+export const move = (array, from, to) => {
+  if (to >= array.length) {
+      var k = to - array.length;
+      while ((k--) + 1) {
+          array.push(undefined);
+      }
+  }
+  array.splice(to, 0, array.splice(from, 1)[0]);
+  return array;
+};

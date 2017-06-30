@@ -1,9 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Grid from '../components/Grid';
+
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import { getActiveFolders, getAllFolders } from '../selectors';
-import { addActiveFolder, fetchFolders } from '../actions';
+import { addActiveFolder, fetchFolders, moveActiveFolders } from '../actions';
+
+import Folder from './Folder';
+import SelectFolder from '../components/SelectFolder';
 
 const propTypes = {
   getFolders: PropTypes.func,
@@ -12,15 +17,15 @@ const propTypes = {
   addFolder: PropTypes.func,
 };
 
-const mapStateToProps = (state) => ({
-  activeFolders: getActiveFolders(state),
-  folders: getAllFolders(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getFolders: () => dispatch(fetchFolders()),
-  addFolder: (id) => dispatch(addActiveFolder(id)),
-});
+const styles = {
+  app: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    marginLeft: 10,
+    marginRight: 10,
+    overflow: 'scroll',
+  },
+};
 
 class App extends Component {
   componentDidMount() {
@@ -29,11 +34,21 @@ class App extends Component {
 
   render() {
     return (
-      <Grid
-        activeFolders={this.props.activeFolders}
-        folders={this.props.folders}
-        addFolder={this.props.addFolder}
-      />
+      <div style={styles.app}>
+        {this.props.activeFolders.map((folder, i) => (
+          <Folder
+            folder={folder}
+            key={folder.id}
+            id={folder.id}
+            index={i}
+            moveFolder={this.props.moveFolder}
+          />
+        ))}
+        <SelectFolder
+          folders={this.props.folders}
+          addFolder={this.props.addFolder}
+        />
+      </div>
     );
   }
 }
@@ -41,6 +56,13 @@ class App extends Component {
 App.propTypes = propTypes;
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+  (state) => ({
+    activeFolders: getActiveFolders(state),
+    folders: getAllFolders(state),
+  }),
+  (dispatch) => ({
+    getFolders: () => dispatch(fetchFolders()),
+    addFolder: (id) => dispatch(addActiveFolder(id)),
+    moveFolder: (from, to) => dispatch(moveActiveFolders(from, to)),
+  })
+)(DragDropContext(HTML5Backend)(App));
