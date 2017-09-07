@@ -1,0 +1,88 @@
+{
+  "name": "dalenberg/duizend-bookmarks",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "",
+  "branch": "",
+  "style": {
+    "name": "Swiss",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/SwissHeader",
+      "article": "article/SwissArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "heading": {
+      "fontWeight": 700,
+      "letterSpacing": "-0.01em"
+    },
+    "layout": {
+      "fluid": true
+    },
+    "colors": {
+      "text": "#000",
+      "background": "#fff",
+      "primary": "#05a",
+      "secondary": "#444",
+      "highlight": "#f30",
+      "border": "#ccc",
+      "muted": "#eee"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "https://github.com/dalenberg/duizend-bookmarks",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://npmjs.com/package/bookmarks",
+          "text": "npm"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "duizend-bookmarks",
+      "subhead": "Display the bookmarks you want on the new tab page in Google Chrome",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "duizend-bookmarks: Display the bookmarks you want on the new tab page in Google Chrome",
+          "url": ""
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "dalenberg",
+          "repo": "duizend-bookmarks"
+        }
+      ],
+      "text": "v0.3.0"
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "<h1>Duizend Bookmarks (Work in Progress)</h1>\n<h2>Download</h2>\n<p><a href=\"https://chrome.google.com/webstore/detail/duizend-bookmarks/kmnfikmmhcddkjpgmpohgoihcpdiankj\">Download plugin from the Chrome Webstore</a></p>\n<h2>Install</h2>\n<p>Run <code>npm install</code> and <code>npm run dev</code> to start the development server.\nGo to the <a>Chrome Extensions page</a> and add /dev as unpacked extension</p>\n<h2>Useful links</h2>\n<ul>\n<li><a href=\"https://developer.chrome.com/extensions/bookmarks\">Bookmarks API from Google Developer Chrome Platform</a></li>\n</ul>\n<h2>Credits</h2>\n<p>Some code is inspired by <a href=\"https://github.com/jhen0409/react-chrome-extension-boilerplate\">React Chrome Extension Boilerplate</a></p>\n"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/dalenberg/duizend-bookmarks",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/dalenberg",
+          "text": "dalenberg"
+        }
+      ]
+    }
+  ]
+}
